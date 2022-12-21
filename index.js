@@ -8,7 +8,13 @@ const app = express();
 
 app.use(cors());
 
+app.use(express.json());
+
 dbConnection();
+
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/login', require('./routes/auth'));
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Server corriendo en el ${process.env.PORT}`);
