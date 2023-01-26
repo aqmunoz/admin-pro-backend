@@ -36,7 +36,9 @@ const login = async (req, res = response) => {
 
         res.status(200).json({
             ok: true,
-            token
+            id: usuarioDB.id,
+            token,
+            usuario: usuarioDB
         });
 
 
@@ -102,9 +104,12 @@ const renewToken = async (req, res= response) => {
 
     const token = await generarJWT(uid);
 
+    const usuario = await Usuario.findById(uid);
+
     res.json({
         ok:true,
-        token
+        token,
+        usuario
     });
 }
 

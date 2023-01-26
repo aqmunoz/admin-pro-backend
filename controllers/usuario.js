@@ -67,7 +67,7 @@ const actualizarUsuario = async (req = request, res = response) => {
 
     try {
         
-        const usuarioDB = Usuario.findById( uid );
+        const usuarioDB = await Usuario.findById( uid );
        
         
         if (!usuarioDB) {
@@ -85,7 +85,7 @@ const actualizarUsuario = async (req = request, res = response) => {
             if ( existeEmail ) {
                 return res.status(400).json({
                     ok: false,
-                    msg: 'Existe un usuario con ese email'
+                    msg: 'Existe un usuario con ese email222'
                 });
             }
         }
